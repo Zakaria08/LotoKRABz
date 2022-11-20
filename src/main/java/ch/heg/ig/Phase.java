@@ -1,12 +1,12 @@
 package ch.heg.ig;
 
 public abstract class Phase {
-    public abstract boolean verif(Carton carton,Tirage tirage);
+    public abstract boolean verif(CartonDeJeu carton,Tirage tirage);
     public boolean verifLigne1(CartonDeJeu carton , Tirage tirage)
     {
         boolean check = false;
         for (Integer num : carton.getLigne1()){
-            check = Tirage.getNumeros.contains(num);
+            check = tirage.getNumerosSortis().contains(num);
             if (check == false){
                 return false;
             }
@@ -17,7 +17,7 @@ public abstract class Phase {
     {
         boolean check = false;
         for (Integer num : carton.getLigne2()){
-            check = Tirage.getNumeros.contains(num);
+            check = tirage.getNumerosSortis().contains(num);
             if (check == false){
                 return false;
             }
@@ -28,7 +28,7 @@ public abstract class Phase {
     {
         boolean check = false;
         for (Integer num : carton.getLigne3()){
-            check = Tirage.getNumeros.contains(num);
+            check = tirage.getNumerosSortis().contains(num);
             if (check == false){
                 return false;
             }
