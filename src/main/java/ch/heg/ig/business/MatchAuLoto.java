@@ -12,7 +12,7 @@ public class MatchAuLoto {
     public Map<String, CartonDeJeu> cartons = new HashMap<>();
 
     public void loadCartons() {
-        this.cartons = ImportJson.importCartonDeJeu();
+       // this.cartons = ImportJson.importCartonDeJeu();
     }
 
     public CartonDeJeu getCarton(String id) {
@@ -28,11 +28,10 @@ public class MatchAuLoto {
             do {
                 System.out.println("Entrer un numéro ou une commande valide :");
                 Scanner command = new Scanner(System.in);
-                String reponse = command.nextLine();
-                CommandeEntree = reponse;
+                CommandeEntree = command.nextLine();
                 //if response is a number
-                if (reponse.matches("[0-9]+")) {
-                    int num = Integer.parseInt(reponse);
+                if (CommandeEntree.matches("[0-9]+")) {
+                    int num = Integer.parseInt(CommandeEntree);
                     if (num > 0 && num < 91) {
                         tour.tirageLoto.ajouter(num);
                         System.out.println("Le numéro " + num + " a été ajouté au tirage");
@@ -41,7 +40,7 @@ public class MatchAuLoto {
                     }
                 }
             }
-            while (CommandeEntree == "Q" || CommandeEntree == "q" || CommandeEntree == "N" || CommandeEntree == "n" || CommandeEntree == "V" || CommandeEntree == "v");
+            while (!CommandeEntree.equals("Q") && !CommandeEntree.equals("q") && !CommandeEntree.equals("N") && !CommandeEntree.equals("n") && !CommandeEntree.equals("V") && !CommandeEntree.equals("v"));
             switch (CommandeEntree) {
                 case "Q":
                 case "q":
@@ -51,25 +50,45 @@ public class MatchAuLoto {
                 case "N":
                 case "n":
                     tour.phaseSuivante();
+                    if (tour.phaseActuelle == Tour.PhaseLoto.DoubleQuine) {
+                        System.out.println("Nous jouons pour la double quine !");
+                    } else if (tour.phaseActuelle == Tour.PhaseLoto.Carton) {
+                        System.out.println("Nous jouons pour le carton plein !");
+                    }
                     break;
                 case "V":
                 case "v":
-                    System.out.println("Entrer l'identifiant du carton à vérifier :");
-                    Scanner command2 = new Scanner(System.in);
-                    String reponse2 = command2.nextLine();
-                    //Check if the carton exist
-                    if (this.cartons.containsKey(reponse2)) {
-                        CartonDeJeu carton = this.getCarton(reponse2);
-                        if (tour.verifCarton(carton)) {
-                            System.out.println("Le carton " + reponse2 + " est gagnant");
+
+                    do {
+                        System.out.println("Entrer l'identifiant du carton à vérifier :");
+                        Scanner command2 = new Scanner(System.in);
+                        CommandeEntree = command2.nextLine();
+                        //Check if the carton exist
+                        if (this.cartons.containsKey(CommandeEntree)) {
+                            CartonDeJeu carton = this.getCarton(CommandeEntree);
+                            if (tour.verifCarton(carton)) {
+                                System.out.println("Le carton " + CommandeEntree + " est gagnant");
+                            } else {
+                                System.out.println("Le carton " + CommandeEntree + " n'est pas gagnant");
+                            }
                         } else {
-                            System.out.println("Le carton " + reponse2 + " n'est pas gagnant");
+                            System.out.println("Le carton " + CommandeEntree + " n'existe pas");
                         }
-                    } else {
-                        System.out.println("Le carton " + reponse2 + " n'existe pas");
-                    }
+                        System.out.println("Voulez-vous vérifier un autre carton ? (O/N)");
+                        Scanner command3 = new Scanner(System.in);
+                        CommandeEntree = command3.nextLine();
+                        if (CommandeEntree.equals("N") || CommandeEntree.equals("n")) {
+                            tour.phaseSuivante();
+                            if (tour.phaseActuelle == Tour.PhaseLoto.DoubleQuine) {
+                                System.out.println("Nous jouons pour la double quine !");
+                            } else if (tour.phaseActuelle == Tour.PhaseLoto.Carton) {
+                                System.out.println("Nous jouons pour le carton plein !");
+                            }
+                        }
+                        break;
+                    } while (!CommandeEntree.equals("N") && !CommandeEntree.equals("n"));
                     break;
             }
-        } while (CommandeEntree == "Q" || CommandeEntree == "q");
+        } while (!CommandeEntree.equals("Q") && !CommandeEntree.equals("q"));
     }
 }
