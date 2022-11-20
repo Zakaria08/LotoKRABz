@@ -31,4 +31,20 @@ public class Tour {
             this.phaseActuelle = p[i];
         }
     }
+
+    public boolean verifCarton(CartonDeJeu cart) {
+        boolean valid = false;
+        switch (this.phaseActuelle) {
+            case Quine:
+                valid = new Quine().verif(cart,this.tirageLoto);
+                break;
+            case DoubleQuine:
+                valid = new DoubleQuine().verif(cart,this.tirageLoto);
+                break;
+            case Carton:
+                valid = new Carton().verif(cart,this.tirageLoto);
+                break;
+        }
+        return valid;
+    }
 }
