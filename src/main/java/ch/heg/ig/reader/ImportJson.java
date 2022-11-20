@@ -10,22 +10,23 @@ import java.util.HashMap;
 import java.util.List;
 
 
+
+
 public class ImportJson {
-    public static  HashMap<String,CartonDeJeu> importCartonDeJeu()  {
-        ListCartonDeJeu listCartonDeJeu = null;
-        HashMap<String, CartonDeJeu> output = null;
-        try {
-            ObjectMapper om = new ObjectMapper();
-            listCartonDeJeu = om.readValue(new File("data/CartonsDeLoto.json"), ListCartonDeJeu.class);
-            for (CartonDeJeu cartonDeJeu : listCartonDeJeu.getCartonsDeJeu()) {
+    public static void main(String[] args) {
+            ListCartonDeJeu listCartonDeJeu = null;
+            HashMap<String, CartonDeJeu> output = null;
+            try {
+                ObjectMapper om = new ObjectMapper();
+                listCartonDeJeu = om.readValue(new File("data/CartonsDeLoto.json"), ListCartonDeJeu.class);
                 output = new HashMap<>();
-                output.put(cartonDeJeu.getId(), cartonDeJeu);
+                for (CartonDeJeu cartonDeJeu : listCartonDeJeu.getCartonsDeJeu()) {
+                    output.put(cartonDeJeu.getId(), cartonDeJeu);
+                }
+
+            } catch (IOException ex) {
+                System.out.println(ex);
             }
 
-        } catch (IOException ex) {
-            System.out.println(ex);
         }
-        return output;
     }
-}
-
