@@ -1,4 +1,4 @@
-package ch.heg.ig;
+package ch.heg.ig.business;
 
 public class MatchAuLoto {
 }

@@ -1,6 +1,6 @@
-package ch.heg.ig;
+package ch.heg.ig.business;
 
-public class DoubleQuine extends Phase{
+public class DoubleQuine extends Phase {
     @Override
     public boolean verif(CartonDeJeu carton , Tirage tirage) {
         return((super.verifLigne1(carton, tirage) && super.verifLigne2(carton, tirage)) || (super.verifLigne2(carton, tirage) && super.verifLigne3(carton, tirage)) || (super.verifLigne1(carton, tirage) && super.verifLigne3(carton, tirage)));

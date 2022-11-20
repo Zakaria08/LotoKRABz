@@ -1,13 +1,10 @@
 # Default ignored files
-/shelf/
-/workspace.xml
-/misc.xml
-/jarRepositories.xml
-/compiler.xml
-/encodings.xml
-/vcs.xml
+.idea/
+target/
+LotoKRABz.iml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
