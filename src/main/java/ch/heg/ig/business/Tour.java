@@ -1,34 +1,43 @@
 package ch.heg.ig.business;
 
+import java.util.Scanner;
+
 public class Tour {
     enum PhaseLoto {
         Quine,
         DoubleQuine,
         Carton
     }
+
     PhaseLoto phaseActuelle = PhaseLoto.Quine;
+
+    boolean isRunning = false;
 
     Tirage tirageLoto = new Tirage();
 
-    public void commencer(){
-        //TODO
-    }
-    public void terminer(){
-        //TODO
-    }
-    public void phaseSuivante(){
-        if(this.phaseActuelle == PhaseLoto.Carton)
-        {
-            this.terminer(); // termine le jeu
+    public void commencer() {
+        Scanner command = new Scanner(System.in);
+        while(!isRunning){
+            System.out.println("Voulez-vous commencer une partie de loto ? (O/N)");
+            String reponse = command.nextLine();
+            if (reponse.equals("O")) {
+                isRunning = true;
+                System.out.println("Nous jouons pour la quine !");
+            }
         }
-        else {
-            PhaseLoto[] p = PhaseLoto.values();
-            int i = 0;
-            for (; p[i] != this.phaseActuelle; i++)
-                ;
-            i++;
-            i %= p.length;
-            this.phaseActuelle = p[i];
+    }
+
+    public void terminer() {
+        tirageLoto.toutEffacer();
+        phaseActuelle = PhaseLoto.Quine;
+        this.commencer();
+    }
+
+    public void phaseSuivante() {
+        if (this.phaseActuelle == PhaseLoto.Carton) {
+            this.terminer();
+        } else {
+            this.phaseActuelle = PhaseLoto.values()[this.phaseActuelle.ordinal() + 1];
         }
     }
 
@@ -36,13 +45,13 @@ public class Tour {
         boolean valid = false;
         switch (this.phaseActuelle) {
             case Quine:
-                valid = new Quine().verif(cart,this.tirageLoto);
+                valid = new Quine().verif(cart, this.tirageLoto);
                 break;
             case DoubleQuine:
-                valid = new DoubleQuine().verif(cart,this.tirageLoto);
+                valid = new DoubleQuine().verif(cart, this.tirageLoto);
                 break;
             case Carton:
-                valid = new Carton().verif(cart,this.tirageLoto);
+                valid = new Carton().verif(cart, this.tirageLoto);
                 break;
         }
         return valid;
