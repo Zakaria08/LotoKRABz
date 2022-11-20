@@ -1,7 +1,7 @@
-package ch.heg.ig;
+package ch.heg.ig.business;
 
 public abstract class Phase {
-    public abstract boolean verif(CartonDeJeu carton,Tirage tirage);
+    public abstract boolean verif(CartonDeJeu carton, Tirage tirage);
     public boolean verifLigne1(CartonDeJeu carton , Tirage tirage)
     {
         boolean check = false;
