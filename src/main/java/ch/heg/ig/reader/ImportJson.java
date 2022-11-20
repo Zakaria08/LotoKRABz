@@ -16,7 +16,7 @@ public class ImportJson {
         HashMap<String, CartonDeJeu> output = null;
         try {
             ObjectMapper om = new ObjectMapper();
-            listCartonDeJeu = om.readValue(new File("Students.json"), ListCartonDeJeu.class);
+            listCartonDeJeu = om.readValue(new File("CartonsDeLoto.json"), ListCartonDeJeu.class);
             for (CartonDeJeu cartonDeJeu : listCartonDeJeu.getCartonsDeJeu()) {
                 output = new HashMap<>();
                 output.put(cartonDeJeu.getId(), cartonDeJeu);
