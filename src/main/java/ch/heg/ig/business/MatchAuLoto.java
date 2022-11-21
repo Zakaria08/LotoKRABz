@@ -33,8 +33,13 @@ public class MatchAuLoto {
                 if (CommandeEntree.matches("[0-9]+")) {
                     int num = Integer.parseInt(CommandeEntree);
                     if (num > 0 && num < 91) {
-                        tour.getTirageLoto().ajouter(num);
-                        System.out.println("Le numéro " + num + " a été ajouté au tirage");
+                        if(!tour.getTirageLoto().checkNum(num)) {
+                            tour.getTirageLoto().ajouter(num);
+                            System.out.println("Le numéro " + num + " a été ajouté au tirage");
+                        }
+                        else {
+                            System.out.println("Le numéro " + num + " déjà sorti");
+                        }
                     } else {
                         System.out.println("Le numéro " + num + " n'est pas valide");
                     }

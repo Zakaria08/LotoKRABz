@@ -17,7 +17,12 @@ public class Tirage {
     }
 
     public void ajouter (Integer num){
-        this.numerosSortis.add(num);
+            this.numerosSortis.add(num);
+    }
+    public boolean checkNum(Integer num){
+
+        return this.numerosSortis.contains(num);
+
     }
     public void toutEffacer (){
         this.numerosSortis.clear();
