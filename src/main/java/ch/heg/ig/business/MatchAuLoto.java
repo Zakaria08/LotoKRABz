@@ -12,7 +12,7 @@ public class MatchAuLoto {
     public Map<String, CartonDeJeu> cartons = new HashMap<>();
 
     public void loadCartons() {
-       // this.cartons = ImportJson.importCartonDeJeu();
+        this.cartons = ImportJson.importCartonDeJeu();
     }
 
     public CartonDeJeu getCarton(String id) {
@@ -40,15 +40,15 @@ public class MatchAuLoto {
                     }
                 }
             }
-            while (!CommandeEntree.equals("Q") && !CommandeEntree.equals("q") && !CommandeEntree.equals("N") && !CommandeEntree.equals("n") && !CommandeEntree.equals("V") && !CommandeEntree.equals("v"));
+            while (!CommandeEntree.equals("Q") && !CommandeEntree.equals("q") && !CommandeEntree.equals("S") && !CommandeEntree.equals("s") && !CommandeEntree.equals("V") && !CommandeEntree.equals("v"));
             switch (CommandeEntree) {
                 case "Q":
                 case "q":
                     tour.terminer();
                     System.out.println("Vous avez quitté le jeu");
                     break;
-                case "N":
-                case "n":
+                case "S":
+                case "s":
                     tour.phaseSuivante();
                     if (tour.getPhaseActuelle() == Tour.PhaseLoto.DoubleQuine) {
                         System.out.println("Nous jouons pour la double quine !");
@@ -58,8 +58,6 @@ public class MatchAuLoto {
                     break;
                 case "V":
                 case "v":
-
-                    do {
                         System.out.println("Entrer l'identifiant du carton à vérifier :");
                         Scanner command2 = new Scanner(System.in);
                         CommandeEntree = command2.nextLine();
@@ -74,19 +72,6 @@ public class MatchAuLoto {
                         } else {
                             System.out.println("Le carton " + CommandeEntree + " n'existe pas");
                         }
-                        System.out.println("Voulez-vous vérifier un autre carton ? (O/N)");
-                        Scanner command3 = new Scanner(System.in);
-                        CommandeEntree = command3.nextLine();
-                        if (CommandeEntree.equals("N") || CommandeEntree.equals("n")) {
-                            tour.phaseSuivante();
-                            if (tour.getPhaseActuelle() == Tour.PhaseLoto.DoubleQuine) {
-                                System.out.println("Nous jouons pour la double quine !");
-                            } else if (tour.getPhaseActuelle() == Tour.PhaseLoto.Carton) {
-                                System.out.println("Nous jouons pour le carton plein !");
-                            }
-                        }
-                        break;
-                    } while (!CommandeEntree.equals("N") && !CommandeEntree.equals("n"));
                     break;
             }
         } while (!CommandeEntree.equals("Q") && !CommandeEntree.equals("q"));
