@@ -9,11 +9,11 @@ public class Tour {
         Carton
     }
 
-    PhaseLoto phaseActuelle = PhaseLoto.Quine;
+    private PhaseLoto phaseActuelle = PhaseLoto.Quine;
 
-    boolean isRunning = false;
+    private boolean isRunning = false;
 
-    Tirage tirageLoto = new Tirage();
+    private Tirage tirageLoto = new Tirage();
 
     public void commencer() {
         Scanner command = new Scanner(System.in);
@@ -55,5 +55,21 @@ public class Tour {
                 break;
         }
         return valid;
+    }
+
+    public Tirage getTirageLoto() {
+        return tirageLoto;
+    }
+
+    public void setTirageLoto(Tirage tirageLoto) {
+        this.tirageLoto = tirageLoto;
+    }
+
+    public PhaseLoto getPhaseActuelle() {
+        return phaseActuelle;
+    }
+
+    public void setPhaseActuelle(PhaseLoto phaseActuelle) {
+        this.phaseActuelle = phaseActuelle;
     }
 }

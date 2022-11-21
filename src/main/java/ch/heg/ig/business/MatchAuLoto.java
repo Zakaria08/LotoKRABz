@@ -33,7 +33,7 @@ public class MatchAuLoto {
                 if (CommandeEntree.matches("[0-9]+")) {
                     int num = Integer.parseInt(CommandeEntree);
                     if (num > 0 && num < 91) {
-                        tour.tirageLoto.ajouter(num);
+                        tour.getTirageLoto().ajouter(num);
                         System.out.println("Le numéro " + num + " a été ajouté au tirage");
                     } else {
                         System.out.println("Le numéro " + num + " n'est pas valide");
@@ -50,9 +50,9 @@ public class MatchAuLoto {
                 case "N":
                 case "n":
                     tour.phaseSuivante();
-                    if (tour.phaseActuelle == Tour.PhaseLoto.DoubleQuine) {
+                    if (tour.getPhaseActuelle() == Tour.PhaseLoto.DoubleQuine) {
                         System.out.println("Nous jouons pour la double quine !");
-                    } else if (tour.phaseActuelle == Tour.PhaseLoto.Carton) {
+                    } else if (tour.getPhaseActuelle() == Tour.PhaseLoto.Carton) {
                         System.out.println("Nous jouons pour le carton plein !");
                     }
                     break;
@@ -79,9 +79,9 @@ public class MatchAuLoto {
                         CommandeEntree = command3.nextLine();
                         if (CommandeEntree.equals("N") || CommandeEntree.equals("n")) {
                             tour.phaseSuivante();
-                            if (tour.phaseActuelle == Tour.PhaseLoto.DoubleQuine) {
+                            if (tour.getPhaseActuelle() == Tour.PhaseLoto.DoubleQuine) {
                                 System.out.println("Nous jouons pour la double quine !");
-                            } else if (tour.phaseActuelle == Tour.PhaseLoto.Carton) {
+                            } else if (tour.getPhaseActuelle() == Tour.PhaseLoto.Carton) {
                                 System.out.println("Nous jouons pour le carton plein !");
                             }
                         }
