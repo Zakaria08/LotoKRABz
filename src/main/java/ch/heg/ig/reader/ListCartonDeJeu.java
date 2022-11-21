@@ -1,5 +1,6 @@
-package ch.heg.ig.business;
+package ch.heg.ig.reader;
 
+import ch.heg.ig.business.CartonDeJeu;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;

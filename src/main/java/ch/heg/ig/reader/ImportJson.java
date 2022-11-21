@@ -1,13 +1,11 @@
 package ch.heg.ig.reader;
 
 import ch.heg.ig.business.CartonDeJeu;
-import ch.heg.ig.business.ListCartonDeJeu;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class ImportJson {
