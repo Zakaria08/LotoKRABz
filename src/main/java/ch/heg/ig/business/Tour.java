@@ -11,11 +11,10 @@ public class Tour {
 
     private PhaseLoto phaseActuelle = PhaseLoto.Quine;
 
-    private boolean isRunning = false;
-
     private Tirage tirageLoto = new Tirage();
 
     public void commencer() {
+        boolean isRunning = false;
         Scanner command = new Scanner(System.in);
         while(!isRunning){
             System.out.println("Voulez-vous commencer une partie de loto ? (O/N)");
