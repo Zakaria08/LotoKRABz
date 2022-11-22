@@ -40,17 +40,17 @@ public class Tour {
         }
     }
 
-    public boolean verifCarton(CartonDeJeu cart) {
+    public boolean verifCarton(CartonDeJeu carton) {
         boolean valid = false;
         switch (this.phaseActuelle) {
             case Quine:
-                valid = new Quine().verif(cart, this.tirageLoto);
+                valid = Vérificateur.verifQuine(carton, this.tirageLoto);
                 break;
             case DoubleQuine:
-                valid = new DoubleQuine().verif(cart, this.tirageLoto);
+                valid = Vérificateur.verifDoubleQuine(carton, this.tirageLoto);
                 break;
             case Carton:
-                valid = new Carton().verif(cart, this.tirageLoto);
+                valid = Vérificateur.verifCarton(carton, this.tirageLoto);
                 break;
         }
         return valid;
