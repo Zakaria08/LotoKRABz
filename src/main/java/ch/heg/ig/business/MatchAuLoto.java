@@ -9,19 +9,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MatchAuLoto {
-    public Map<String, CartonDeJeu> cartons = new HashMap<>();
 
-    public void loadCartons() {
-        this.cartons = ImportJson.importCartonDeJeu();
-    }
 
-    public CartonDeJeu getCarton(String id) {
-        return this.cartons.get(id);
-    }
 
     public void run() {
-        this.loadCartons();
+
         Tour tour = new Tour();
+        tour.loadCartons();
         tour.commencer();
         String CommandeEntree = "";
         do {
@@ -67,8 +61,8 @@ public class MatchAuLoto {
                         Scanner command2 = new Scanner(System.in);
                         CommandeEntree = command2.nextLine();
                         //Check if the carton exist
-                        if (this.cartons.containsKey(CommandeEntree)) {
-                            CartonDeJeu carton = this.getCarton(CommandeEntree);
+                        if (tour.getCartons().containsKey(CommandeEntree)) {
+                            CartonDeJeu carton = tour.getCarton(CommandeEntree);
                             if (tour.verifCarton(carton)) {
                                 System.out.println("Le carton " + CommandeEntree + " est gagnant");
                             } else {

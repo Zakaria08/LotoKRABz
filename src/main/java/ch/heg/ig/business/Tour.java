@@ -1,8 +1,19 @@
 package ch.heg.ig.business;
 
+import ch.heg.ig.reader.ImportJson;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Tour {
+    public Map<String, CartonDeJeu> cartons = new HashMap<>();
+    public void loadCartons() {
+        this.cartons = ImportJson.importCartonDeJeu();
+    }
+    public CartonDeJeu getCarton(String id) {
+        return this.cartons.get(id);
+    }
     enum PhaseLoto {
         Quine,
         DoubleQuine,
@@ -70,5 +81,13 @@ public class Tour {
 
     public void setPhaseActuelle(PhaseLoto phaseActuelle) {
         this.phaseActuelle = phaseActuelle;
+    }
+
+    public Map<String, CartonDeJeu> getCartons() {
+        return cartons;
+    }
+
+    public void setCartons(Map<String, CartonDeJeu> cartons) {
+        this.cartons = cartons;
     }
 }
