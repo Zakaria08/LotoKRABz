@@ -1,14 +1,8 @@
 package ch.heg.ig.business;
 
-import ch.heg.ig.reader.ImportJson;
-import com.sun.source.tree.DoWhileLoopTree;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-public class MatchAuLoto {
+public class Console {
 
 
 
